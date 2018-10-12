@@ -1,0 +1,15 @@
+!!!
+%html
+  %head
+    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+    %meta{:charset => "UTF-8"}/
+  %body
+    %h1 ツイートのセンチメンタル値
+    %p 直近20件のツイートを取得し、TextAnalyticsAPI にデータを投げ値を取得してくるウェブサイトです✨
+    %form{:action => "user", :method => "post"}
+      %div
+        %p Twitterのユーザー名を入力してください
+        %p
+          @
+          %input{:name => "name", :type => "text"}/
+          %input{:type => "submit", :value => "送信する"}/

@@ -5,6 +5,7 @@ require 'pry'
 require 'json'
 require 'uri'
 require 'net/http'
+require 'haml'
 
 url = URI("https://australiaeast.api.cognitive.microsoft.com/text/analytics/v2.0/sentiment")
 
@@ -16,7 +17,13 @@ request = Net::HTTP::Post.new(url)
 request["content-type"] = 'application/json'
 request["ocp-apim-subscription-key"] = ENV['AZURE_SUBSCRIPTION_TEXT_ANALYSIS']
 
-get '/:name' do
+get '/' do
+  haml :index
+end
+
+post '/user' do
+
+  @username = params['name']
   uri = "https://twitter.com/@#{params['name']}"
   doc = Nokogiri::HTML(open(uri),nil,"utf-8")
 
@@ -31,5 +38,5 @@ get '/:name' do
     @nano.push("#{tweet} , #{nanote["documents"].first["score"]}")
   end
 
-  erb :index
+  haml :user
 end
