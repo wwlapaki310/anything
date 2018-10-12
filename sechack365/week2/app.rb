@@ -1,7 +1,6 @@
 require 'sinatra'
 require 'open-uri'
 require 'nokogiri'
-require 'pry'
 require 'json'
 require 'uri'
 require 'net/http'
