@@ -1,11 +1,22 @@
 !!!
 %html
   %head
-    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
-    %meta{:charset => "UTF-8"}/
-  %body
-    %div
-      username:#{@username}
-    %ol
-      - @nano.each do |tweet|
-        %ul= tweet
+    %link{:href => "//fonts.googleapis.com/css?family=Raleway:400,300,600", :rel => "stylesheet", :type => "text/css"}/
+    %link{:href => "/css/normalize.css", :rel => "stylesheet", :type => "text/css"}/
+    %link{:href => "/css/style.css", :rel => "stylesheet", :type => "text/css"}/
+  %body.container
+    %h1.header ツイートのセンチメンタル値
+    %p 直近20件のツイートを取得し、TextAnalyticsAPI にデータを投げ値を取得してくるウェブサイトです✨
+    %div.docs-section
+    %table
+      %thead
+        %tr
+          %th username
+          %th tweet
+          %th sentiment
+      %tbody
+        - @nano.each do |tweet|
+          %tr
+            %td=tweet.username
+            %td=tweet.text
+            %td=tweet.score
