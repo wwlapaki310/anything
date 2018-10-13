@@ -6,7 +6,8 @@ require 'uri'
 require 'net/http'
 require 'haml'
 
-url = URI("https://australiaeast.api.cognitive.microsoft.com/text/analytics/v2.0/sentiment")
+url_extract = ENV['AZURE_TEXT_ANALYSIS_URL']
+url = URI(url_extract)
 
 http = Net::HTTP.new(url.host, url.port)
 http.use_ssl = true
